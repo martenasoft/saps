@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e3da5282-b05f-4aab-9568-9009f587b4ed" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/saps.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/migrations/Version20240406212933.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Feedback.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/ChangeDataDayInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/DefaultStatusInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/IdInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NameInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsCreateDeleteInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsMoveItemsInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsMoveUpDownInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NodeInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/RelatedMenuInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/SeoInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/SlugIntrface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/StatusInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/TypeInterface.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Menu.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Page.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/ChangeDataDayTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/IdTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/NameTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/NodeTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/RelatedMenuTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/SeoTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/SlugTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/StatusTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/TypeTrait.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Helper/StringHelper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/FeedbackRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/MenuRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsBaseAbstract.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsCreateDelete.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsMoveItems.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsMoveUpDown.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/PageRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Repository/UserRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/Entity/Greeting.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/.dockerignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/components/common/Layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/config/entrypoint.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/next.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/pages/_app.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/pages/admin/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/pnpm-lock.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/postcss.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/admin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/api.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/logo_api-platform.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/logo_tilleuls.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/mercure.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/rocket.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/api-platform/web.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/styles/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pwa/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/api/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.4 With XDebug">
+    <include_path>
+      <path value="$PROJECT_DIR$/api/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/api/vendor/willdurand/negotiation" />
+      <path value="$PROJECT_DIR$/api/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/cebe/php-openapi" />
+      <path value="$PROJECT_DIR$/api/vendor/runtime/frankenphp-symfony" />
+      <path value="$PROJECT_DIR$/api/vendor/zozlak/rdf-constants" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/expression-language" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/clock" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/runtime" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-info" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/property-access" />
+      <path value="$PROJECT_DIR$/api/vendor/api-platform/schema-generator" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/api-platform/core" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-csrf" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/password-hasher" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/flex" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/options-resolver" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/api/vendor/sweetrdf/rdf-helpers" />
+      <path value="$PROJECT_DIR$/api/vendor/friendsofphp/php-cs-fixer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/api/vendor/sweetrdf/rdf-interface" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/api/vendor/sweetrdf/easyrdf" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/framework-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/web-link" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/polyfill-php83" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/monolog-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/debug-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/web-profiler-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/mercure" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/api/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/browser-kit" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/twig-bridge" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/serializer" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/asset" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/dotenv" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/api/vendor/symfony/cache-contracts" />
+      <path value="$PROJECT_DIR$/api/vendor/nette/php-generator" />
+      <path value="$PROJECT_DIR$/api/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/api/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/api/vendor/doctrine/common" />
+      <path value="$PROJECT_DIR$/api/vendor/composer" />
+      <path value="$PROJECT_DIR$/api/vendor/twig/twig" />
+      <path value="$PROJECT_DIR$/api/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/api/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/link" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/api/vendor/masterminds/html5" />
+      <path value="$PROJECT_DIR$/api/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/api/vendor/league/html-to-markdown" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="2eowBKjwERTI02LhZ9efQPs67a9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/private/var/www/saps/pwa&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/private/var/www/saps/pwa/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pwa" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e3da5282-b05f-4aab-9568-9009f587b4ed" name="Changes" comment="" />
+      <created>1712584102177</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1712584102177</updated>
+      <workItem from="1712584103633" duration="9438000" />
+      <workItem from="1712598747837" duration="599000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
