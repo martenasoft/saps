@@ -28,7 +28,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
-
     normalizationContext: ['groups' => ['page:read']],
     denormalizationContext: ['groups' => ['page:write']],
 )]

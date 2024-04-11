@@ -8,7 +8,9 @@ use App\Entity\Interfaces\NameInterface;
 use App\Entity\Interfaces\SlugIntrface;
 use App\Entity\Interfaces\StatusInterface;
 use App\Entity\Interfaces\TypeInterface;
+use App\Entity\Menu;
 use App\Helper\StringHelper;
+use App\Repository\MenuRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +20,10 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class EntitySubscriber implements EventSubscriberInterface
 {
 
-    public function __construct(private EntityManagerInterface $entityManager)
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private MenuRepository $menuRepository
+    )
     {
     }
 
@@ -64,7 +69,11 @@ class EntitySubscriber implements EventSubscriberInterface
         if ($entity instanceof TypeInterface && $entity->getType() === null) {
             $entity->setType($entity->getDefaultType());
         }
+
+
     }
+
+
     public static function getSubscribedEvents(): array
     {
         return [

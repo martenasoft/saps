@@ -5,63 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5997ff1f-a67d-4af0-9a1e-55483fba7672" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/config/packages/reset_password.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/migrations/Version20240409062754.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Feedback.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/ChangeDataDayInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/DefaultStatusInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/IdInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NameInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsCreateDeleteInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsMoveItemsInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NestedSetsMoveUpDownInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/NodeInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/RelatedMenuInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/SeoInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/SlugIntrface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/StatusInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Interfaces/TypeInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Page.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/ResetPasswordRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/ChangeDataDayTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/IdTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/NameTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/NodeTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/RelatedMenuTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/SeoTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/SlugTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/StatusTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/Traits/TypeTrait.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Entity/User.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/EventSubscriber/EntitySubscriber.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Exceptions/NestedSetsException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Exceptions/NestedSetsMoveUnderSelfException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Exceptions/NestedSetsNodeNotFoundException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Helper/StringHelper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/FeedbackRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/MenuRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsBaseAbstract.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsCreateDelete.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsMoveItems.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/NestedSetsMoveUpDown.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/PageRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/ResetPasswordRequestRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Repository/UserRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Service/ImageOptimizer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Service/MenuService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Service/SaveImageService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/Service/SavePageService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/Entity/Greeting.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pwa/pages/admin/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pwa/pages/admin/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/Controller/MainControlerController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/templates/main_controler/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/api/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,17 +133,21 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2erQJNHcRfIxoXo1oSlYgQc2tmq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/private/var/www/saps/pwa",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -208,6 +159,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pwa" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -216,11 +172,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712660151647</updated>
-      <workItem from="1712660152831" duration="8185000" />
+      <workItem from="1712660152831" duration="10719000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

@@ -89,21 +89,6 @@ class MenuRepository extends ServiceEntityRepository
             throw $exception;
         }
     }
-//
-//    public function findOneByNameQueryBuilder(string $name, string $alias = 'm'): QueryBuilder
-//    {
-//        return $this
-//            ->createQueryBuilder($alias)
-//            ->andWhere("{$alias}.name=:name")
-//            ->setParameter("name", $name);
-//    }
-//
-//    public function getParentByItemId(int $id): ?NodeInterface
-//    {
-//        $sql = "SELECT parent_id FROM `" . $this->getClassMetadata()->getTableName() . "` WHERE `id`=:id";
-//        $parentId = $this->getEntityManager()->getConnection()->fetchOne($sql, ["id" => $id]);
-//        return $this->find($parentId);
-//    }
 
     public function getParentsByItemQueryBuilder(
         NodeInterface $menu,

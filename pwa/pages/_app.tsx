@@ -5,6 +5,7 @@ import type { DehydratedState } from "react-query"
 
 function MyApp({ Component, pageProps }: AppProps<{dehydratedState: DehydratedState}>) {
   return <Layout dehydratedState={pageProps.dehydratedState}>
+
     <Component {...pageProps} />
   </Layout>
 }

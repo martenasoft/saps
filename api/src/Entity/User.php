@@ -3,33 +3,49 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Post;
 use App\Entity\Interfaces\IdInterface;
 use App\Entity\Interfaces\StatusInterface;
 use App\Entity\Traits\IdTrait;
 use App\Entity\Traits\StatusTrait;
 use App\Repository\UserRepository;
+use App\State\UserHashPasswordStateProcessor;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource]
+#[ApiResource(
+    operations:[
+        new Post(
+            uriTemplate: '/api/registration',
+            processor: UserHashPasswordStateProcessor::class,
+            normalizationContext: ['groups' => ['registration:read']],
+            denormalizationContext: ['groups' => ['registration:write']],
+        )
+    ]
+)]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: 'users')] // renaming caused doe to the user is pgsql system's database
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements
-    IdInterface,
     UserInterface,
     PasswordAuthenticatedUserInterface,
     StatusInterface
 {
     use
-        IdTrait,
         StatusTrait
         ;
     public const STATUS_ACTIVE = 1;
     public const STATUS_BLOCKED = 2;
     public const STATUS_DELETED = 3;
+
+    #[ORM\Column(type: Types::SMALLINT)]
+    private ?int $status = null;
 
     public const STATUSES = [
         self::STATUS_ACTIVE => 'Active',
@@ -50,6 +66,7 @@ class User implements
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank]
     #[Assert\Email]
+    #[Groups(['registration:read', 'registration:write'])]
     private ?string $email = null;
 
     /**
@@ -64,8 +81,31 @@ class User implements
     #[ORM\Column]
     private ?string $password = null;
 
+    #[Groups(['registration:read', 'registration:write'])]
+    private ?string $plainPassword = null;
+
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int|null $id
+     * @return User
+     */
+    public function setId(?int $id): User
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+
 
     public function getEmail(): ?string
     {
@@ -153,4 +193,17 @@ class User implements
     {
         return self::STATUS_BLOCKED;
     }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): static
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
 }
