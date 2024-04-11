@@ -3,7 +3,7 @@
 
 Клонуємо репозиторий
 ```shell
-# git clone https://github.com/martenasoft/test_from_stfalcon.git
+# https://github.com/martenasoft/saps.git
 ```
 Запускаем сборку (версія докеру неважлива)
 ```shell
