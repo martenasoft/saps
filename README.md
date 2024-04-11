@@ -3,17 +3,17 @@
 
 Клонуємо репозиторий
 ```shell
-# https://github.com/martenasoft/saps.git
+https://github.com/martenasoft/saps.git
 ```
 Запускаем сборку (версія докеру неважлива)
 ```shell
-# make build
+make build
 ```
 
 
 Запускаем Docker
 ```shell
-# make up
+make up
 ```
 
 В браузері відкриває посилання (може запуститись не відразу. треба почекати)
