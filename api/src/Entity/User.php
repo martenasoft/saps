@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Entity\Interfaces\IdInterface;
 use App\Entity\Interfaces\StatusInterface;
 use App\Entity\Traits\IdTrait;
@@ -17,21 +19,26 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-#[ApiResource]
+
 #[ApiResource(
-    operations:[
-        new Post(
-            uriTemplate: '/api/registration',
-            normalizationContext: ['groups' => ['registration:read']],
-            denormalizationContext: ['groups' => ['registration:write']],
-            processor: UserHashPasswordStateProcessor::class,
-        )
-    ]
+    operations: [
+    new Post(
+        uriTemplate: '/api/registration',
+        validationContext: ['groups' => ['registration']],
+        processor: UserHashPasswordStateProcessor::class
+    )],
+    normalizationContext: ['groups' => ['registration:read']],
+    denormalizationContext: ['groups' => ['registration:write']])
+]
+#[ApiResource(    normalizationContext: ['groups' => ['user:read']],
+    denormalizationContext: ['groups' => ['user:write']],
+    validationContext: ['groups' => ['default']],
+    processor: UserHashPasswordStateProcessor::class,
 )]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: 'users')] // renaming caused doe to the user is pgsql system's database
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+#[UniqueEntity(fields: ['email'], groups: ['registration', 'default'], message: 'There is already an account with this email')]
 class User implements
     UserInterface,
     PasswordAuthenticatedUserInterface,
@@ -62,30 +69,30 @@ class User implements
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['user:read', 'user:write'])]
     private ?int $id = null;
     #[ORM\Column(length: 180)]
-    #[Assert\NotBlank]
-    #[Assert\Email]
-    #[Groups(['registration:read', 'registration:write'])]
+    #[Assert\NotBlank(groups: ['registration', 'default'])]
+    #[Assert\Email(groups: ['registration', 'default'])]
+    #[Groups(['registration:read', 'registration:write', 'user:read', 'user:write'])]
     private ?string $email = null;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
+    #[Groups(['user:read', 'user:write'])]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
-    #[Groups(['registration:read', 'registration:write'])]
-    #[Assert\NotBlank]
+    #[Groups(['registration:read', 'registration:write', 'user:read', 'user:write'])]
+    #[Assert\NotBlank(groups: [ 'registration'])]
     private ?string $plainPassword = null;
 
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['user:read', 'user:write'])]
     private $isVerified = false;
 
     /**
@@ -200,7 +207,7 @@ class User implements
         return $this->plainPassword;
     }
 
-    public function setPlainPassword(string $plainPassword): static
+    public function setPlainPassword(?string $plainPassword): static
     {
         $this->plainPassword = $plainPassword;
 

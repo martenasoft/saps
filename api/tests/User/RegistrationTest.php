@@ -30,8 +30,9 @@ class RegistrationTest extends ApiTestCase
         $result = $response->toArray(false);
 
         $this->assertResponseStatusCodeSame(422);
-        $this->assertTrue($result['detail'] &&
-            $result['detail'] == 'plainPassword: This value should not be blank.');
+        $this->assertArrayHasKey('detail', $result);
+        $this->assertNotEmpty($result['detail']);
+        $this->assertEquals($result['detail'], 'plainPassword: This value should not be blank.');
     }
 
     public function testErrorEmailExists()
@@ -60,7 +61,8 @@ class RegistrationTest extends ApiTestCase
 
         $result = $response->toArray(false);
         $this->assertResponseStatusCodeSame(422);
-        $this->assertTrue(!empty($result['detail']));
-        $this->assertTrue($result['detail'] == 'email: There is already an account with this email');
+        $this->assertArrayHasKey('detail', $result);
+        $this->assertNotEmpty($result['detail']);
+        $this->assertEquals($result['detail'], 'email: There is already an account with this email');
     }
 }
