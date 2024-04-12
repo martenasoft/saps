@@ -22,9 +22,9 @@ use Symfony\Component\Validator\Constraints as Assert;
     operations:[
         new Post(
             uriTemplate: '/api/registration',
-            processor: UserHashPasswordStateProcessor::class,
             normalizationContext: ['groups' => ['registration:read']],
             denormalizationContext: ['groups' => ['registration:write']],
+            processor: UserHashPasswordStateProcessor::class,
         )
     ]
 )]
@@ -82,6 +82,7 @@ class User implements
     private ?string $password = null;
 
     #[Groups(['registration:read', 'registration:write'])]
+    #[Assert\NotBlank]
     private ?string $plainPassword = null;
 
     #[ORM\Column(type: 'boolean')]

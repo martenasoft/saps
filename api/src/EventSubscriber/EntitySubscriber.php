@@ -31,7 +31,6 @@ class EntitySubscriber implements EventSubscriberInterface
     {
         $entity = $event->getControllerResult();
         $method = $event->getRequest()->getMethod();
-
         if (
             $method !== Request::METHOD_POST &&
             $method !== Request::METHOD_PATCH &&
