@@ -17,7 +17,7 @@ trait RegistrationTrait
             'plainPassword' => '123123',
         ];
 
-        $response = $client->request('POST', 'https://localhost/api/registration', [
+        $response = $client->request('POST',  $_SERVER['HTTP_HOST'] . '/api/registration', [
             'headers' => ['Content-Type' => 'application/ld+json'],
             'json' => $data,
         ]);

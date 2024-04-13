@@ -21,17 +21,20 @@ use App\Entity\Traits\SlugTrait;
 use App\Entity\Traits\StatusTrait;
 use App\Entity\Traits\TypeTrait;
 use App\Repository\PageRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     normalizationContext: ['groups' => ['page:read']],
     denormalizationContext: ['groups' => ['page:write']],
+    paginationItemsPerPage: 10,
 )]
 #[ORM\Entity(repositoryClass: PageRepository::class)]
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_NAME', fields: ['name'])]
+#[UniqueEntity(fields: ['name'], message: 'There is already a page with this name')]
 class Page implements
     IdInterface,
     SeoInterface,
@@ -116,6 +119,7 @@ class Page implements
 
     #[ORM\Column(length: 255)]
     #[Groups(['page:read', 'page:write'])]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[Groups(['page:read', 'page:write'])]
@@ -171,10 +175,12 @@ class Page implements
     #[Groups(['page:read', 'page:write'])]
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
-    #[Groups(['page:read', 'page:write'])]
+
+   /* #[Groups(['page:read', 'page:write'])]
     #[ORM\ManyToOne(cascade: ["persist", "remove"])]
     #[ORM\JoinColumn(name: "menu_id", referencedColumnName: "id", nullable: true)]
-    private ?Menu $menu = null;
+    private ?Menu $menu = null;*/
+
     #[Groups(['page:read', 'page:write'])]
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $type = null;

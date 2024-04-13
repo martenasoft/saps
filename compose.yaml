@@ -5,7 +5,7 @@ services:
       - rabbitmq
       - redis
     depends_on:
-      - database
+      - mysql
     restart: unless-stopped
     environment:
       PWA_UPSTREAM: pwa:3000
@@ -14,7 +14,8 @@ services:
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
       TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
       TRUSTED_HOSTS: ${TRUSTED_HOSTS:-^${SERVER_NAME:-example\.com|localhost}|php$$}
-      DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-root}@database:5432/${POSTGRES_DB:-app}?serverVersion=${POSTGRES_VERSION:-16}&charset=${POSTGRES_CHARSET:-utf8}
+      #DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-root}@database:5432/${POSTGRES_DB:-app}?serverVersion=${POSTGRES_VERSION:-16}&charset=${POSTGRES_CHARSET:-utf8}
+      DATABASE_URL: "mysql://app:root@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://php/.well-known/mercure}
       MERCURE_PUBLIC_URL: ${CADDY_MERCURE_PUBLIC_URL:-https://${SERVER_NAME:-localhost}/.well-known/mercure}
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
@@ -46,7 +47,7 @@ services:
     ports:
       - "7379:6379"
     volumes:
-      - "./docker/redis/dаta:/root/redis"
+      - redis:/root/redis
     
     environment:
       #REDIS_PASSWORD: my-password
@@ -72,7 +73,38 @@ services:
     image: rabbitmq:3.10.7-management
     ports:
       - 15673:15672
-      - 5673:5672        
+      - 5673:5672       
+      
+  mysql:
+    image: mysql
+    restart: always
+    
+    volumes:
+      - mysql_config:/etc/my.cnf
+      - mysql_data:/var/lib/mysql:rw
+      - mysql_logs:/var/log/mysql
+    
+    user: mysql 
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    
+    
+  phpmyadmin:
+      image: phpmyadmin
+      container_name: pma
+      volumes:
+        - mysql_logs:/etc/phpmyadmin/config.inc.php
+      links:
+        - mysql
+      restart: always
+      ports:
+        - 5055:80 
+      environment:
+        PMA_USER: admin
+        PMA_PASSWORD: admin
+      
 ###> doctrine/doctrine-bundle ###
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
@@ -94,9 +126,15 @@ services:
 volumes:
   caddy_data:
   caddy_config:
-###> doctrine/doctrine-bundle ###
   db_data:
   pgadmin-data:
-###< doctrine/doctrine-bundle ###
+  mysql_data:
+  mysql_config:
+  mysql_logs:
+  mysql_admin:
+  redis:  
+    
+
+
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###

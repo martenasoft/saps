@@ -23,7 +23,7 @@ class RegistrationTest extends ApiTestCase
             'plainPassword' => '',
         ];
 
-        $response = $client->request('POST', 'https://localhost/api/registration', [
+        $response = $client->request('POST', $_SERVER['HTTP_HOST'] . '/api/registration', [
             'headers' => ['Content-Type' => 'application/ld+json'],
             'json' => $data,
         ]);
@@ -54,7 +54,7 @@ class RegistrationTest extends ApiTestCase
         $entityManager->persist($user);
         $entityManager->flush();
 
-        $response = $client->request('POST', 'https://localhost/api/registration', [
+        $response = $client->request('POST', $_SERVER['HTTP_HOST'] . '/api/registration', [
             'headers' => ['Content-Type' => 'application/ld+json'],
             'json' => $data,
         ]);

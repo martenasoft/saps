@@ -40,15 +40,14 @@ class EntitySubscriber implements EventSubscriberInterface
             return;
         }
 
-
         if ($entity instanceof ChangeDataDayInterface) {
             $now = new \DateTimeImmutable('now');
 
-            if ($method === Request::METHOD_POST && empty($entity->getCreatedAt())) {
+            if (empty($entity->getCreatedAt())) {
                 $entity->setCreatedAt($now);
             }
 
-            if ($method === Request::METHOD_PATCH && $method === Request::METHOD_PUT) {
+            if ($method === Request::METHOD_PATCH || $method === Request::METHOD_PUT) {
                 $entity->setUpdatedAt($now);
             }
         }
@@ -68,10 +67,7 @@ class EntitySubscriber implements EventSubscriberInterface
         if ($entity instanceof TypeInterface && $entity->getType() === null) {
             $entity->setType($entity->getDefaultType());
         }
-
-
     }
-
 
     public static function getSubscribedEvents(): array
     {

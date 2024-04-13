@@ -20,7 +20,7 @@ class CreateUserTest extends ApiTestCase
             "isVerified" => true
         ];
 
-        $response = $client->request('POST', 'https://localhost/users', [
+        $response = $client->request('POST', $_SERVER['HTTP_HOST'] . '/users', [
             'headers' => [
                 'accept' => 'application/ld+json',
                 'Content-Type' => 'application/ld+json'
@@ -47,7 +47,7 @@ class CreateUserTest extends ApiTestCase
             "isVerified" => true
         ];
 
-        $response = $client->request('POST', 'https://localhost/users', [
+        $response = $client->request('POST', $_SERVER['HTTP_HOST'] . '/users', [
             'headers' => [
                 'accept' => 'application/ld+json',
                 'Content-Type' => 'application/ld+json'
@@ -77,7 +77,7 @@ class CreateUserTest extends ApiTestCase
             "isVerified" => true
         ];
 
-        $response = $client->request('POST', 'https://localhost/users', [
+        $response = $client->request('POST', $_SERVER['HTTP_HOST'] . '/users', [
             'headers' => [
                 'accept' => 'application/ld+json',
                 'Content-Type' => 'application/ld+json'

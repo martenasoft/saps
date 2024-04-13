@@ -32,19 +32,10 @@ use PhpParser\Node\Param;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
-//    normalizationContext: ['groups' => ['menu:read']],
-//    denormalizationContext: ['groups' => ['menu:write']],
 
-    //provider: MenuStateProvider::class,
+    normalizationContext: ['groups' => ['menu:read']],
+    denormalizationContext: ['groups' => ['menu:write']],
 
-//    operations: [
-//        new GetCollection(
-//            itemUriTemplate: '/menu/{parentId}',
-//
-//            options: ['parentId' => '1'],
-//        ),
-//        new Get()
-//    ],
     processor: MenuStateProcessor::class
 )]
 #[ApiFilter(RangeFilter::class, properties: ['lft', 'rgt', 'tree', 'lvl'])]

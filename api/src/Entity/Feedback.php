@@ -12,10 +12,16 @@ use App\Entity\Traits\StatusTrait;
 use App\Repository\FeedbackRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ApiResource]
+#[ApiResource(
+    paginationItemsPerPage: 10,
+)]
 #[ORM\Entity(repositoryClass: FeedbackRepository::class)]
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_FEEDBACK_EMAIL_SUBJECT', fields: ['fromEmail', 'subject'])]
+#[UniqueEntity(fields: ['fromEmail', 'subject'], message: 'There is already a massage already exists')]
 class Feedback implements
     IdInterface,
     StatusInterface,
@@ -42,9 +48,12 @@ class Feedback implements
     #[ORM\Column]
     private ?int $id = null;
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
+    #[Assert\Email]
     private ?string $fromEmail = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $subject = null;
 
     #[ORM\Column(type: Types::TEXT)]

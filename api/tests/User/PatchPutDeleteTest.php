@@ -3,15 +3,14 @@
 namespace App\Tests\User;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use App\Entity\User;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Tests\Traits\UserTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 class PatchPutDeleteTest extends ApiTestCase
 {
-    use RefreshDatabaseTrait;
+    use RefreshDatabaseTrait, UserTrait;
 
     private const NEW_USER_EMAIL = 'new@user.com';
 
@@ -91,23 +90,9 @@ class PatchPutDeleteTest extends ApiTestCase
         $client = self::createClient();
         $user = $this->initUser($data);
 
-        return $client->request($method, 'https://localhost/users/' . $user->getId(), [
+        return $client->request($method, $_SERVER['HTTP_HOST'] . '/users/' . $user->getId(), [
             'headers' => $headers,
             'json' => $data,
         ]);
-    }
-
-    private function initUser(array $data): User
-    {
-        $container = self::getContainer();
-        $entityManager = $container->get(EntityManagerInterface::class);
-        $user = new User();
-        $user->setEmail(self::NEW_USER_EMAIL);
-        $user->setStatus(User::STATUS_ACTIVE);
-        $user->setPassword($container->get('security.user_password_hasher')->hashPassword($user, $data['plainPassword'] ?? '123123'));
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-        return $user;
     }
 }
