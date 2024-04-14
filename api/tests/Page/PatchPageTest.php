@@ -13,7 +13,7 @@ class PatchPageTest extends ApiTestCase
     {
         $client = self::createClient();
         $container = self::getContainer();
-        $page = GetFeedbackTest::initPages($container, 1)[0];
+        $page = GetPageTest::initPages($container, 1)[0];
 
         $response = $client->request('PATCH', $_SERVER['HTTP_HOST'] . '/pages/'.$page->getId(), [
             'headers' => [
@@ -35,7 +35,7 @@ class PatchPageTest extends ApiTestCase
     {
         $client = self::createClient();
         $container = self::getContainer();
-        $page = GetFeedbackTest::initPages($container, 1)[0];
+        $page = GetPageTest::initPages($container, 1)[0];
 
         $response = $client->request('PATCH', $_SERVER['HTTP_HOST'] . '/pages/'.$page->getId(), [
             'headers' => [
@@ -57,7 +57,7 @@ class PatchPageTest extends ApiTestCase
     {
         $client = self::createClient();
         $container = self::getContainer();
-        $page = GetFeedbackTest::initPages($container, 1)[0];
+        $page = GetPageTest::initPages($container, 1)[0];
         $newName = 'new name';
 
         $response = $client->request('PUT', $_SERVER['HTTP_HOST'] . '/pages/'.$page->getId(), [

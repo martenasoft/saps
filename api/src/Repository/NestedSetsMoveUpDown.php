@@ -83,20 +83,20 @@ class NestedSetsMoveUpDown extends NestedSetsBaseAbstract implements NestedSetsM
 
         $parentId = $node1->getParentId();
 
-        $sql = "UPDATE `{$this->getTableName()}` SET 
+        $sql = "UPDATE `{$this->getTableName()}` SET
                             `lft` = {$node2->getLft()},
                             `rgt` = {$node2->getRgt()},
-                            `lvl` = {$node2->getLvl()},                          
-                            `parent_id` = {$node2->getParentId()} 
-                         WHERE `id` = {$node1->getId()} AND `tree` = {$node1->getTree()}       
+                            `lvl` = {$node2->getLvl()},
+                            `parent_id` = {$node2->getParentId()}
+                         WHERE `id` = {$node1->getId()} AND `tree` = {$node1->getTree()}
                     ;";
 
-        $sql .= "UPDATE `{$this->getTableName()}` SET 
+        $sql .= "UPDATE `{$this->getTableName()}` SET
                             `lft` = {$lft},
                             `rgt` = {$rgt},
                             `lvl` = {$lvl},
                             `parent_id` = {$parentId}
-                         WHERE `id` = {$node2->getId()} AND `tree` = {$node1->getTree()}       
+                         WHERE `id` = {$node2->getId()} AND `tree` = {$node1->getTree()}
                     ;";
 
         try {
@@ -109,18 +109,16 @@ class NestedSetsMoveUpDown extends NestedSetsBaseAbstract implements NestedSetsM
     private function exchangeParentIdForSubItems(NodeInterface $node1, NodeInterface $node2): ?int
     {
         $sql = "UPDATE `{$this->getTableName()}` SET `parent_id` = {$node2->getId()}
-                WHERE `lft` > {$node1->getLft()} AND                                
-                     `rgt` < {$node1->getRgt()} AND 
+                WHERE `lft` > {$node1->getLft()} AND
+                     `rgt` < {$node1->getRgt()} AND
                       `lvl` <= {$node1->getLvl()} + 1 AND
                       `tree` = {$node1->getTree()};";
 
         $sql .= "UPDATE `{$this->getTableName()}` SET `parent_id` = {$node1->getId()}
-                WHERE `lft` > {$node2->getLft()} AND                                
-                     `rgt` < {$node2->getRgt()} AND 
+                WHERE `lft` > {$node2->getLft()} AND
+                     `rgt` < {$node2->getRgt()} AND
                       `lvl` <= {$node2->getLvl()} + 1 AND
                       `tree` = {$node1->getTree()};";
-
-
         try {
             return $this->getEntityManager()->getConnection()->executeQuery($sql)->rowCount();
         } catch (\Throwable $exception) {

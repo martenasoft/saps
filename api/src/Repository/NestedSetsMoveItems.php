@@ -27,20 +27,20 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
         }
 
         $sql = "CREATE TABLE IF NOT EXISTS `{$moveTmpTable}` (
-                `id` int unsigned NOT NULL AUTO_INCREMENT,                
+                `id` int unsigned NOT NULL AUTO_INCREMENT,
                 `lft` int unsigned DEFAULT NULL,
-                `rgt` int unsigned DEFAULT NULL,          
-                `tree` int unsigned DEFAULT NULL,          
+                `rgt` int unsigned DEFAULT NULL,
+                `tree` int unsigned DEFAULT NULL,
                 `parent_id` int unsigned DEFAULT NULL,
                  i int unsigned DEFAULT NULL,
                 PRIMARY KEY (`id`)); ";
 
         $sql .= "CREATE TABLE IF NOT EXISTS `{$tmpAllNodesTableName}` (
-                `id` int unsigned NOT NULL AUTO_INCREMENT,                
+                `id` int unsigned NOT NULL AUTO_INCREMENT,
                 `parent_id` int unsigned DEFAULT NULL,
                 `lft` int unsigned DEFAULT NULL,
-                `rgt` int unsigned DEFAULT NULL,          
-                `tree` int unsigned DEFAULT NULL,          
+                `rgt` int unsigned DEFAULT NULL,
+                `tree` int unsigned DEFAULT NULL,
                 `lvl` int unsigned DEFAULT NULL,
                 i int unsigned DEFAULT NULL,
                 PRIMARY KEY (`id`)); ";
@@ -53,15 +53,16 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
             $treeIdArray[] = $parent->getTree();
         }
 
-        $sql .=  " INSERT INTO `{$tmpAllNodesTableName}` 
-                SELECT `ns`.`id`, 
-                       `ns`.`parent_id`, 
-                       `ns`.`lft`, 
-                       `ns`.`rgt`, 
-                       `ns`.`tree`, 
+
+        $sql .=  " INSERT INTO `{$tmpAllNodesTableName}`
+                SELECT `ns`.`id`,
+                       `ns`.`parent_id`,
+                       `ns`.`lft`,
+                       `ns`.`rgt`,
+                       `ns`.`tree`,
                        `ns`.`lvl`,
-                       '0'  i 
-                    FROM `{$nsTableName}` `ns` 
+                       '0'  i
+                    FROM `{$nsTableName}` `ns`
                 WHERE `ns`.`tree` IN (" . implode(',', $treeIdArray) . ");";
 
         $this->getEntityManager()->getConnection()->executeQuery($sql);
@@ -70,14 +71,14 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
         $throwException = null;
 
         try {
-            $sql = "INSERT INTO `{$moveTmpTable}` 
-                    SELECT `ns`.`id`, 
-                           `ns`.`lft`, 
-                           `ns`.`rgt`, 
-                           `ns`.`tree`, 
+            $sql = "INSERT INTO `{$moveTmpTable}`
+                    SELECT `ns`.`id`,
+                           `ns`.`lft`,
+                           `ns`.`rgt`,
+                           `ns`.`tree`,
                            `ns`.`parent_id`,
-                           '0'  i  
-                    FROM `{$nsTableName}` `ns` 
+                           '0'  i
+                    FROM `{$nsTableName}` `ns`
                        WHERE `ns`.`lft` >= {$node->getLft()}
                           AND `ns`.`rgt` <= {$node->getRgt()}
                           AND `ns`.`tree` = {$node->getTree()}
@@ -114,7 +115,7 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
                                         AND rgt < {$parentNew['rgt']}
                                         AND tree = {$parentNew['tree']}
                                 THEN lft + {$insertedLength}
-                                
+
                                 WHEN lft > {$parentNew['lft']}
                                      AND rgt > {$parentNew['rgt']}
                                      AND tree = {$parentNew['tree']}
@@ -127,28 +128,28 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
                                          AND rgt < {$parentNew['rgt']}
                                          AND tree = {$parentNew['tree']}
                                     THEN rgt + {$insertedLength}
-                                    
+
                                     WHEN (lft > {$parentNew['lft']}
                                          AND rgt > {$parentNew['rgt']}
                                          AND tree = {$parentNew['tree']}
                                          ) OR (lft <= {$parentNew['lft']}
                                          AND rgt >= {$parentNew['rgt']}
                                          AND tree = {$parentNew['tree']}
-                                         ) 
+                                         )
                                     THEN rgt + {$insertedLength}
                                     ELSE rgt END
                                 )
                         WHERE tree = {$parent->getTree()};";
                 $sql .= "SET @s_ := 0;";
-                $sql .= "INSERT INTO `{$tmpAllNodesTableName}` 
+                $sql .= "INSERT INTO `{$tmpAllNodesTableName}`
                         SELECT  id,
                                 IF (@s_ = 0, {$parentNew['id']}, parent_id),
-                                lft - {$node->getLft()} + 1 + {$parentNew['lft']}, 
+                                lft - {$node->getLft()} + 1 + {$parentNew['lft']},
                                 rgt - {$node->getLft()} + 1 + {$parentNew['lft']},
                                 {$parentNew['tree']},
-                                 
-                                ( 
-                                    (SELECT COUNT(*) FROM {$moveTmpTable} t1 WHERE t1.lft < t2.lft AND t1.rgt>t2.rgt)  
+
+                                (
+                                    (SELECT COUNT(*) FROM {$moveTmpTable} t1 WHERE t1.lft < t2.lft AND t1.rgt>t2.rgt)
                                     + {$parent->getLvl()} + 1
                                 ),
                                 @s_ := @s_ + 1
@@ -163,14 +164,14 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
 
                 $maxTree++;
                 $sql = "SET @s_ := 0;";
-                $sql .= "INSERT INTO `{$tmpAllNodesTableName}` 
+                $sql .= "INSERT INTO `{$tmpAllNodesTableName}`
                         SELECT id, IF (@s_ = 0, 0, parent_id),
-                               
-                               lft - {$node->getLft()} + 1, 
+
+                               lft - {$node->getLft()} + 1,
                                rgt - {$node->getLft()} + 1,
-                               {$maxTree}, 
+                               {$maxTree},
                                (
-                                    IF (@s_ = 0, 1,   (SELECT COUNT(*) FROM `{$moveTmpTable}` t1 
+                                    IF (@s_ = 0, 1,   (SELECT COUNT(*) FROM `{$moveTmpTable}` t1
                                         WHERE t1.lft < t2.lft AND t1.rgt>t2.rgt)  + 1
                                     )
                                ),
@@ -221,13 +222,13 @@ class NestedSetsMoveItems extends NestedSetsBaseAbstract implements NestedSetsMo
     {
         $allNodesTmpTableName = $this->getMovedTemporaryTableNameForAllNodes();
         $nsTableName = $this->getTableName();
-        $sql = "UPDATE `{$nsTableName}` ns 
-                    INNER JOIN {$allNodesTmpTableName} nst 
-                    ON ns.id = nst.id 
-                SET ns.lft = nst.lft, 
-                    ns.rgt = nst.rgt, 
-                    ns.tree = nst.tree, 
-                    ns.lvl = nst.lvl, 
+        $sql = "UPDATE `{$nsTableName}` ns
+                    INNER JOIN {$allNodesTmpTableName} nst
+                    ON ns.id = nst.id
+                SET ns.lft = nst.lft,
+                    ns.rgt = nst.rgt,
+                    ns.tree = nst.tree,
+                    ns.lvl = nst.lvl,
                     ns.parent_id = nst.parent_id";
 
         $this->getEntityManager()->getConnection()->executeQuery($sql);

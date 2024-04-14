@@ -15,7 +15,6 @@ class MenuService
         private CacheInterface $cache
     )
     {
-
     }
 
     public function getAllItems(string $cacheKey, ?callable $func = null, int $cacheExpire = 3600): array

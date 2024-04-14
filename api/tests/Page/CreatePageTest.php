@@ -34,7 +34,7 @@ class CreatePageTest extends ApiTestCase
     {
         $client = self::createClient();
         $container = self::getContainer();
-        $pageName = GetFeedbackTest::initPages($container, 1)[0];
+        $pageName = GetPageTest::initPages($container, 1)[0];
         $data = self::getPageData();
         $data['name'] = $pageName->getName();
 

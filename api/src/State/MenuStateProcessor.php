@@ -17,12 +17,10 @@ class MenuStateProcessor implements ProcessorInterface
 
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): Menu|null
     {
+
         if (!$data instanceof Menu) {
             return null;
         }
-
-
-        $this->saveMenuService->saveMenu($data, $uriVariables);
-        return $data;
+        return $this->saveMenuService->saveMenu($data, $uriVariables);
     }
 }

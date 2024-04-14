@@ -9,12 +9,11 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 class DeletePageTest extends ApiTestCase
 {
     use RefreshDatabaseTrait;
-
     public function testSuccess()
     {
         $client = self::createClient();
         $container = self::getContainer();
-        $page = GetFeedbackTest::initPages($container, 1)[0];
+        $page = GetPageTest::initPages($container, 1)[0];
         $id = $page->getId();
         $client->request('DELETE', $_SERVER['HTTP_HOST'] . '/pages/'.$id, [
             'headers' => [

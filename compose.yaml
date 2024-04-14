@@ -15,7 +15,7 @@ services:
       TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
       TRUSTED_HOSTS: ${TRUSTED_HOSTS:-^${SERVER_NAME:-example\.com|localhost}|php$$}
       #DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-root}@database:5432/${POSTGRES_DB:-app}?serverVersion=${POSTGRES_VERSION:-16}&charset=${POSTGRES_CHARSET:-utf8}
-      DATABASE_URL: "mysql://app:root@127.0.0.1:3306/app?serverVersion=8.0.32&charset=utf8mb4"
+      DATABASE_URL: "mysql://root:root@mysql:3306/app?serverVersion=8.0.32&charset=utf8mb4"
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://php/.well-known/mercure}
       MERCURE_PUBLIC_URL: ${CADDY_MERCURE_PUBLIC_URL:-https://${SERVER_NAME:-localhost}/.well-known/mercure}
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
@@ -46,16 +46,14 @@ services:
     restart: always    
     ports:
       - "7379:6379"
-    volumes:
-      - redis:/root/redis
     
     environment:
       #REDIS_PASSWORD: my-password
       #REDIS_PORT: 6379
       #REDIS_DATABASES=: 16
       ALLOW_EMPTY_PASSWORD: "yes"
-    labels:
-      - "traefik.http.routers.redis.rule=Host(`redis.localhost`)"
+
+
   pgadmin:
     image: dpage/pgadmin4
     container_name: pgadmin4_container
@@ -80,7 +78,6 @@ services:
     restart: always
     
     volumes:
-      - mysql_config:/etc/my.cnf
       - mysql_data:/var/lib/mysql:rw
       - mysql_logs:/var/log/mysql
     
@@ -94,16 +91,16 @@ services:
   phpmyadmin:
       image: phpmyadmin
       container_name: pma
-      volumes:
-        - mysql_logs:/etc/phpmyadmin/config.inc.php
+
       links:
         - mysql
       restart: always
       ports:
         - 5055:80 
       environment:
-        PMA_USER: admin
-        PMA_PASSWORD: admin
+        PMA_HOST: mysql
+        PMA_USER: root
+        PMA_PASSWORD: root
       
 ###> doctrine/doctrine-bundle ###
   database:
@@ -129,9 +126,7 @@ volumes:
   db_data:
   pgadmin-data:
   mysql_data:
-  mysql_config:
   mysql_logs:
-  mysql_admin:
   redis:  
     
 

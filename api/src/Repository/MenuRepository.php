@@ -94,7 +94,7 @@ class MenuRepository extends ServiceEntityRepository
         NodeInterface $menu,
         ?int          $deep = null,
         ?QueryBuilder $queryBuilder = null,
-        bool          $isIncludeCurrentNode = true,
+        bool          $isIncludeCurrentNode = false,
         string        $alias = 'm'
     ): QueryBuilder
     {

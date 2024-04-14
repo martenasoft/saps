@@ -24,20 +24,26 @@ class NestedSetsCreateDelete extends NestedSetsBaseAbstract implements NestedSet
                 $parentId = $parent->getId();
                 $tree = $parent->getTree();
 
+                $tableName = $this->getTableName();
+                $sql = "UPDATE $tableName {$this->alias}
+                            SET {$this->alias}.rgt={$this->alias}.rgt + 2
+                         WHERE {$this->alias}.tree=:tree AND {$this->alias}.rgt>=:lft;";
+
+                $sql .= "UPDATE $tableName {$this->alias}
+                            SET {$this->alias}.lft={$this->alias}.lft + 2
+                         WHERE {$this->alias}.tree=:tree AND {$this->alias}.lft>:lft;";
+
                 $lft = $rgt;
                 $rgt++;
                 $lvl++;
 
-                $tableName = $this->getTableName();
-                $sql = "UPDATE $tableName {$this->alias}
-                            SET rgt=rgt + 2
-                         WHERE {$this->alias}.tree=$tree AND {$this->alias}.rgt>=$lft;";
+                $params = [
+                    'tree' => $tree,
+                    'lft' => $lft,
+                    'rgt' => $rgt
+                ];
 
-                $sql .= "UPDATE $tableName {$this->alias}
-                            SET lft=lft + 2
-                         WHERE {$this->alias}.tree=$tree AND {$this->alias}.lft>:$lft;";
-
-                $this->getEntityManager()->getConnection()->executeQuery($sql);
+                $this->getEntityManager()->getConnection()->executeQuery($sql, $params);
 
             } else {
 

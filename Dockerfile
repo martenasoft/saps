@@ -30,6 +30,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
+
+
 RUN set -eux; \
 	install-php-extensions \
 		@composer \
@@ -37,7 +39,7 @@ RUN set -eux; \
 		intl \
 		opcache \
 		zip \
-	;
+
 
 # Install Redis
 RUN pecl install -o -f redis amqp && docker-php-ext-enable redis amqp
@@ -45,7 +47,8 @@ RUN pecl install -o -f redis amqp && docker-php-ext-enable redis amqp
 ###> recipes ###
 ###> doctrine/doctrine-bundle ###
 RUN set -eux; \
-	install-php-extensions pdo_pgsql
+	install-php-extensions pdo_mysql pdo_pgsql
+
 ###< doctrine/doctrine-bundle ###
 ###< recipes ###
 
